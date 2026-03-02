@@ -4,14 +4,14 @@ const App = () => {
   const [notes, setnotes] = useState([]);
 
   function getnotes() {
-    axios.get("http://localhost:3000/api/notes").then((response) => {
+    axios.get("https://cohort-2-0-i7xt.onrender.com/api/notes").then((response) => {
       setnotes(response.data.notes);
     });
   }
   async function handleSubmit(e) {
     e.preventDefault();
     const { title, description } = e.target.elements;
-    const response = await axios.post("http://localhost:3000/api/notes", {
+    const response = await axios.post("https://cohort-2-0-i7xt.onrender.com/api/notes", {
       title: title.value,
       description: description.value,
     });
@@ -20,7 +20,7 @@ const App = () => {
     getnotes();
   }
   async function handleDelete(id){
-    await axios.delete(`http://localhost:3000/api/notes/${id}`)
+    await axios.delete(`https://cohort-2-0-i7xt.onrender.com/api/notes/${id}`)
     .then((res)=>{
       alert(res.data.msg)
     })
